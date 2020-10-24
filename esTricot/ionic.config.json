@@ -1,5 +1,7 @@
 {
   "name": "esTricot",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
