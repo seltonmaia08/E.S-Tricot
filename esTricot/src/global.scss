@@ -24,3 +24,20 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+*{
+    font-family: Georgia;
+    font-size: 16px;
+    color: white;
+}
+
+ion-toolbar{
+    --background: #800000;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+ion-content{
+    --background: linear-gradient(#8000007e, #FD5CB87E);
+}
