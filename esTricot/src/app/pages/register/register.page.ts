@@ -1,35 +1,34 @@
-import { RegisterPage } from './../register/register.page';
+import { User } from './../../interfaces/user';
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
-import { User } from 'src/app/interfaces/user';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.page.html',
-  styleUrls: ['./sign-in.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class SignInPage implements OnInit {
+export class RegisterPage implements OnInit {
 
-  userLogin: User = {}
-  message: string
+  modal: any
   load: any
   toast: any
-  modal: any
+  userRegister: User = {}
+  message: string
+
 
   constructor(
-    private modalCtl: ModalController,
     private auth: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private navCtrl: NavController
   ) { }
 
-  async login() {
+
+  async register() {
     await this.loading()
     try {
-      await this.auth.login(this.userLogin)
-        .then(() => this.navCtrl.navigateForward('home'))
+      await this.auth.register(this.userRegister)
+        .then(() => this.modal.dismiss())
     }
     catch (e) {
       switch (e.code) {
@@ -42,9 +41,6 @@ export class SignInPage implements OnInit {
         case 'auth/email-already-in-use':
           this.message = "E-mail já existente."
           break;
-        case 'auth/wrong-password':
-          this.message = "E-mail ou senha estão incorretos."
-          break;
       }
       this.toasting(this.message)
       console.error(e)
@@ -54,13 +50,11 @@ export class SignInPage implements OnInit {
     }
 
   }
-  pageRegister() {
-    this.modalPageRegister()
-  }
 
-   //interações 
 
-   async loading() {
+  //interações 
+
+  async loading() {
     this.load = await this.loadingCtrl.create({
       message: 'Por favor, aguarde...',
       spinner: 'bubbles',
@@ -79,15 +73,7 @@ export class SignInPage implements OnInit {
     return this.toast.present()
   }
 
-  async modalPageRegister() {
-    this.modal = await this.modalCtl.create({ component: RegisterPage })
-    return this.modal.present()
-  }
-
-
-
   ngOnInit() {
-
   }
 
 }

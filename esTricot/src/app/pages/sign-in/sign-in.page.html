@@ -1,66 +1,29 @@
 <ion-content>
   <div class="logo"></div>
-  <ion-slides #slides>
-    <ion-slide>
       <ion-card>
         <ion-card-header>LOGIN</ion-card-header>
         <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="mail" slot="start"></ion-icon>
-            E-mail
+          <ion-label position="floating">E-mail
+            <ion-text>*</ion-text>
           </ion-label>
-          <ion-input type="email" (keyup)="emailLogin($event)"></ion-input>
+          <ion-icon name="mail" slot="end"></ion-icon>
+          <ion-input type="email" [(ngModel)]="userLogin.email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="key" slot="start"></ion-icon>
-            Senha
+          <ion-label position="floating">Senha
+            <ion-text>*</ion-text>
           </ion-label>
-          <ion-input type="password" (keyup)="passwordLogin($event)"></ion-input>
+          <ion-icon name="key" slot="end"></ion-icon>
+          <ion-input type="password" [(ngModel)]="userLogin.password"></ion-input>
         </ion-item>
-        <ion-button class="btn-login" expand="block" shape="round">
+        <ion-button class="btn-login" expand="block" shape="round" (click)="login()"> 
           ENTRAR
           <ion-icon name="send"></ion-icon>
         </ion-button>
-        <ion-button class="btn-register" expand="block" shape="round" (click)="register(slides)">
+        <ion-button class="btn-register" expand="block" shape="round" (click)="pageRegister()">
           CADASTRAR
           <ion-icon name="newspaper"></ion-icon>
         </ion-button>
         <a routerLink="">Esqueci a senha!</a>
       </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card>
-        <ion-card-header>Register</ion-card-header>
-        <ion-item>
-          <ion-label position="floating">Name</ion-label>
-          <ion-input type="text" (keyup)="nameRegister($event)"></ion-input>
-          <ion-icon name="person" slot="end"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" (keyup)="emailRegister($event)"></ion-input>
-          <ion-icon name="mail" slot="end"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">E-mail confirm</ion-label>
-          <ion-input type="email" (keyup)="emailConfirm($event)"></ion-input>
-          <ion-icon name="mail" slot="end"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" (keyup)="passwordRegister($event)"></ion-input>
-          <ion-icon name="key" slot="end"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password confirm</ion-label>
-          <ion-input type="password" (keyup)="passwordConfirm($event)"></ion-input>
-          <ion-icon name="key" slot="end"></ion-icon>
-        </ion-item>
-        <ion-button class="btn-login" expand="block" shape="round" (click)="saveRegister(slides)">
-          Save
-        </ion-button>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
 </ion-content>

@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="logo"></div>
+      <ion-card>
+        <ion-card-header>Register</ion-card-header>
+        <ion-item>
+          <ion-label position="floating">Name
+            <ion-text>*</ion-text>
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="userRegister.name"></ion-input>
+          <ion-icon name="person" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">E-mail
+            <ion-text>*</ion-text>
+          </ion-label>
+          <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
+          <ion-icon name="mail" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password
+            <ion-text>*</ion-text>
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="userRegister.password">
+            <ion-icon name=""></ion-icon>
+          </ion-input>
+          <ion-icon name="key" slot="end"></ion-icon>
+        </ion-item>
+        <ion-button class="btn-login" expand="block" shape="round" (click)="register(slides)">
+          Save
+        </ion-button>
+      </ion-card>
+</ion-content>
