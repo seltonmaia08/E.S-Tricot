@@ -10,4 +10,15 @@
     <ion-searchbar placeholder="Buscar" animated>
     </ion-searchbar>
   </div>
+  <ion-card *ngFor="let p of products" (click)="openPageSeeProducts()">
+    <div class="produto">
+      <img [src]="p.urlImage">
+  </div>
+   <ion-item lines="none">{{ p.name }}</ion-item>
+   <ion-text class="price">R$ {{ p.price }}</ion-text><br>
+    <ion-text>{{ p.description }}</ion-text>
+  </ion-card>
+  <div class="footer">
+    
+  </div>
 </ion-content>

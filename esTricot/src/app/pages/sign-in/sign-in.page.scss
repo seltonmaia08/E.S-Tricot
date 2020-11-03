@@ -10,7 +10,7 @@ ion-content{
     margin-top: 25px;
 }
 ion-card{
-    --background: #800000;
+    --background: #FD5CB8;
     padding: 15px;
     border-radius: 0.8em;
     border-top-right-radius: 2em;
@@ -24,18 +24,18 @@ ion-item{
     --background: transparent;
 }
 .item-has-focus{
-    color: rgb(1, 238, 255);
+    color: #ffffff;
     font-size: 16px;
-    --border-color: rgb(1, 238, 255);
+    --border-color: #800000;
 }
 ion-input{
-    --color: white;
+    --color: #000000;
 }
 .btn-login{
     margin-top: 40px;
     margin-bottom: 15px;
-    --background: rgb(0, 255, 47);
-    color: black;
+    --background: rgb(196, 15, 115);
+    color: #000000;
 
     ion-icon{
         margin-left: 10px;

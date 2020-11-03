@@ -26,32 +26,36 @@ export class SignInPage implements OnInit {
   ) { }
 
   async login() {
-    await this.loading()
-    try {
-      await this.auth.login(this.userLogin)
-        .then(() => this.navCtrl.navigateForward('home'))
-    }
-    catch (e) {
-      switch (e.code) {
-        case 'auth/argument-error':
-          this.message = "Por favor preencher todos os campos!"
-          break;
-        case 'auth/invalid-email':
-          this.message = "E-mail inválido, por favor verifique o e-mail inserido."
-          break;
-        case 'auth/email-already-in-use':
-          this.message = "E-mail já existente."
-          break;
-        case 'auth/wrong-password':
-          this.message = "E-mail ou senha estão incorretos."
-          break;
-      }
-      this.toasting(this.message)
-      console.error(e)
-    }
-    finally {
-      this.load.dismiss()
-    }
+    this.navCtrl.navigateForward('home')
+    // await this.loading()
+    // try {
+    //   await this.auth.login(this.userLogin)
+    //     .then(() => this.navCtrl.navigateForward('home'))
+    // }
+    // catch (e) {
+    //   switch (e.code) {
+    //     case 'auth/argument-error':
+    //       this.message = "Por favor preencher todos os campos!"
+    //       break;
+    //     case 'auth/invalid-email':
+    //       this.message = "E-mail inválido, por favor verifique o e-mail inserido."
+    //       break;
+    //     case 'auth/email-already-in-use':
+    //       this.message = "E-mail já existente."
+    //       break;
+    //     case 'auth/wrong-password':
+    //       this.message = "E-mail ou senha estão incorretos."
+    //       break;
+    //     case 'auth/network-request-failed':
+    //       this.message = "Erro de conexão."
+    //       break;
+    //   }
+    //   this.toasting(this.message)
+    //   console.error(e)
+    // }
+    // finally {
+    //   this.load.dismiss()
+    // }
 
   }
   pageRegister() {

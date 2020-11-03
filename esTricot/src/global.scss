@@ -28,21 +28,41 @@
 *{
     font-family: Georgia;
     font-size: 16px;
-    color: white;
+    color: #000000;
 }
 
 ion-toolbar{
-    --background: #800000;
+    --background: #FD5CB8;
 }
+
 a{
     text-decoration: none;
-    color: white;
-}
-ion-content{
-    --background: linear-gradient(#8000007e, #FD5CB87E);
+    color: #000000;
 }
 
 .myInter{
     --background: #fd5cb7;
     --color: white; 
+}
+
+.header{
+    background: #FD5CB8;
+
+    h2{
+        width: 60%;
+        float: left;
+        text-align: center;
+    }
+    ion-button{
+        --background: transparent;
+        margin-top: 10px;
+    
+        ion-icon{
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+ion-icon{
+    color: white;
 }

@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   login(user: User){
-    return this.afa.signInWithEmailAndPassword(user.email, user.password)
+    // return this.afa.signInWithEmailAndPassword(user.email, user.password)
   }
 
   register(user: User){
@@ -24,8 +24,8 @@ export class AuthService {
     
   }
 
-  authGuard(){
-    
+  getAuth(){
+    return this.afa
   }
 
   
