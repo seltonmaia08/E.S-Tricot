@@ -18,6 +18,14 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  pages = [
+    {
+      title: 'Home',
+      url: 'home',
+      icon: 'home'
+    }
+  ]
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

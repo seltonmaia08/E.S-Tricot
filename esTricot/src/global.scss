@@ -32,7 +32,8 @@
 }
 
 ion-toolbar{
-    --background: #FD5CB8;
+    --background: #65F9CC;
+    text-align: center;
 }
 
 a{
@@ -41,28 +42,18 @@ a{
 }
 
 .myInter{
-    --background: #fd5cb7;
+    --background: #F9572F;
     --color: white; 
 }
 
-.header{
-    background: #FD5CB8;
+ion-header{
+    background: #65F9CC;
 
-    h2{
-        width: 60%;
-        float: left;
-        text-align: center;
-    }
     ion-button{
         --background: transparent;
         margin-top: 10px;
-    
-        ion-icon{
-            width: 35px;
-            height: 35px;
-        }
     }
 }
 ion-icon{
-    color: white;
+    color: black;
 }

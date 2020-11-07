@@ -51,6 +51,10 @@ export class RegisterPage implements OnInit {
 
   }
 
+  backPage(){
+    this.modal.dismiss()
+  }
+
 
   //interações 
 
