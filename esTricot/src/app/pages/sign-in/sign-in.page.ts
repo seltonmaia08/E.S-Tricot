@@ -1,6 +1,6 @@
 import { RegisterPage } from './../register/register.page';
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
+import { AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { LoadingController, MenuController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './sign-in.page.html',
   styleUrls: ['./sign-in.page.scss'],
 })
-export class SignInPage implements OnInit {
+export class SignInPage implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
   userLogin: User = {}
   message: string
@@ -22,40 +22,40 @@ export class SignInPage implements OnInit {
     private auth: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public menuCtrl: MenuController
   ) { }
 
   async login() {
-    this.navCtrl.navigateForward('home')
-    // await this.loading()
-    // try {
-    //   await this.auth.login(this.userLogin)
-    //     .then(() => this.navCtrl.navigateForward('home'))
-    // }
-    // catch (e) {
-    //   switch (e.code) {
-    //     case 'auth/argument-error':
-    //       this.message = "Por favor preencher todos os campos!"
-    //       break;
-    //     case 'auth/invalid-email':
-    //       this.message = "E-mail inválido, por favor verifique o e-mail inserido."
-    //       break;
-    //     case 'auth/email-already-in-use':
-    //       this.message = "E-mail já existente."
-    //       break;
-    //     case 'auth/wrong-password':
-    //       this.message = "E-mail ou senha estão incorretos."
-    //       break;
-    //     case 'auth/network-request-failed':
-    //       this.message = "Erro de conexão."
-    //       break;
-    //   }
-    //   this.toasting(this.message)
-    //   console.error(e)
-    // }
-    // finally {
-    //   this.load.dismiss()
-    // }
+    await this.loading()
+    try {
+      await this.auth.login(this.userLogin)
+        .then(() => this.navCtrl.navigateForward('home'))
+    }
+    catch (e) {
+      switch (e.code) {
+        case 'auth/argument-error':
+          this.message = "Por favor preencher todos os campos!"
+          break;
+        case 'auth/invalid-email':
+          this.message = "E-mail inválido, por favor verifique o e-mail inserido."
+          break;
+        case 'auth/email-already-in-use':
+          this.message = "E-mail já existente."
+          break;
+        case 'auth/wrong-password':
+          this.message = "E-mail ou senha estão incorretos."
+          break;
+        case 'auth/network-request-failed':
+          this.message = "Erro de conexão."
+          break;
+      }
+      this.toasting(this.message)
+      console.error(e)
+    }
+    finally {
+      this.load.dismiss()
+    }
 
   }
   pageRegister() {
@@ -92,6 +92,20 @@ export class SignInPage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngAfterContentInit(){
+    this.menuCtrl.enable(false)
+    this.menuCtrl.swipeGesture(false)
+  }
+
+  ngAfterViewInit(){
+    this.menuCtrl.enable(false)
+    this.menuCtrl.swipeGesture(false)
+  }
+  ngOnDestroy(){
+    this.menuCtrl.enable(true)
+    this.menuCtrl.swipeGesture(true)
   }
 
 }
