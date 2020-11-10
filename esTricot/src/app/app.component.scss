@@ -1,3 +1,41 @@
 ion-menu{
     width: 500px;
 }
+.btn{
+    --background: transparent;
+    --border-style: none;
+    color: white;
+    width: 100%;
+
+    ion-icon{
+        margin-left: 5px;
+    }
+}
+ion-content{
+    --background: #358a71;
+}
+ion-toolbar{
+    --background: #358a71;
+    
+    h2{
+        color: white;
+    }
+}
+ion-list{
+    background: transparent;
+    margin-bottom: 50px;
+}
+ion-item{
+    --background: transparent;
+}
+ion-item.selected{
+    font-size: 15pt;
+    color: white;
+    padding-left: 20px;
+
+    ion-icon{
+        color: white;
+        width: 25px;
+        height: 25px;
+    }
+}

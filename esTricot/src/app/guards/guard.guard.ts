@@ -1,6 +1,7 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +9,17 @@ import { CanActivate, Router } from '@angular/router';
 export class GuardGuard implements CanActivate {
 
   constructor(
-    private auth: AuthService,
-    private route: Router
+    public auth: AuthService,
+    public route: Router) { }
 
-  ){}
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (next.data.roles && !this.auth.getAuth().onAuthStateChanged(next.data.roles)) {
+      this.route.navigateByUrl('sign-in');
+      return false;
+    }
 
-  canActivate(): Promise<boolean>{
-    return new Promise( resolve => {
-      this.auth.getAuth().onAuthStateChanged(user => {
-        if (user) this.route.navigate(['sign-in']);
-
-        resolve(user ? true : false)
-      })
-    })
+    return true;
   }
-  
 }

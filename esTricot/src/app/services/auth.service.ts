@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user'
@@ -9,6 +10,7 @@ export class AuthService {
 
   constructor(
     private afa: AngularFireAuth,
+    private navCtrl: NavController
   ) { }
 
   login(user: User){
@@ -21,7 +23,11 @@ export class AuthService {
 
 
   logOut(){
-    
+    return this.afa.settings
+      .then(() => {
+        this.navCtrl.navigateRoot('sign-in')
+      })
+      .catch(e => console.error(e))
   }
 
   getAuth(){
